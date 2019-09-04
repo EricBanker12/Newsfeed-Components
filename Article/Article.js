@@ -85,6 +85,11 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Another Entree',
+    date: 'Jan 1st, 2019',
+    firstParagraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla purus erat, imperdiet vitae eleifend dapibus, faucibus rutrum mi. Curabitur in vestibulum purus, ut feugiat ante. Sed eget nisi sed eros aliquam dignissim feugiat et ipsum. Mauris massa dolor, viverra in lacus sed, tempus fringilla sem. Nulla efficitur nunc eros, non accumsan ipsum tincidunt id. Etiam sodales nisi id nisl cursus, id iaculis leo semper. Sed viverra cursus nunc, a posuere dui tempor sit amet. Duis sollicitudin porttitor lobortis. Integer et justo vel lectus sollicitudin pellentesque et eu orci. Aenean accumsan diam nec bibendum lobortis. Cras porta at turpis nec tincidunt. Curabitur id neque et felis rutrum imperdiet.'
   }
 ];
 
@@ -112,3 +117,34 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+function createArticle(title, date) {
+    // article
+    let article = document.createElement('div')
+    article.className = 'article'
+    // title
+    let artTitle = document.createElement('h2')
+    artTitle.innerText=title
+    article.appendChild(artTitle)
+    // date
+    let artDate = document.createElement('p')
+    artDate.className='date'
+    artDate.innerText=date
+    article.appendChild(artDate)
+    // paragraphs
+    for (let par of Array.from(arguments).slice(2)) {
+        let artPar = document.createElement('p')
+        artPar.innerText=par
+        article.appendChild(artPar)
+    }
+    // expand button
+    let artBtn = document.createElement('span')
+    artBtn.className='expandButton'
+    article.appendChild(artBtn)
+
+    return article
+}
+
+let articles = document.querySelector('.articles')
+data.forEach(e=>{
+    articles.appendChild(createArticle(...Object.values(e)))
+})

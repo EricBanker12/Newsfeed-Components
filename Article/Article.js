@@ -139,10 +139,10 @@ function createArticle(title, date) {
     // expand button
     let artBtn = document.createElement('span')
     artBtn.className='expandButton'
-    artBtn.innerText='\u25bc' // empty span does not show
+    artBtn.innerText='\u25bc\u25bc Click to Expand \u25bc\u25bc' // empty span does not show
     artBtn.addEventListener('click', e=>{
         article.classList.toggle('article-open')
-        artBtn.innerText = artBtn.innerText == '\u25bc' ? '\u25b2' : '\u25bc'
+        artBtn.innerText = artBtn.innerText[0] == '\u25bc' ? '\u25b2\u25b2 Click to Close \u25b2\u25b2' : '\u25bc\u25bc Click to Expand \u25bc\u25bc'
     })
     article.appendChild(artBtn)
 

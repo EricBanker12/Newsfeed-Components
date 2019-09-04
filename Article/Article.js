@@ -145,6 +145,14 @@ function createArticle(title, date) {
         artBtn.innerText = artBtn.innerText[0] == '\u25bc' ? '\u25b2\u25b2 Click to Close \u25b2\u25b2' : '\u25bc\u25bc Click to Expand \u25bc\u25bc'
     })
     article.appendChild(artBtn)
+    // close button
+    let closeBtn = document.createElement('button')
+    closeBtn.className = 'close'
+    closeBtn.innerText = 'mark as read'
+    closeBtn.addEventListener('click', e=>{
+        article.style.display = 'none'
+    })
+    article.appendChild(closeBtn)
 
     return article
 }
